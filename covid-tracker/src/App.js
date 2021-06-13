@@ -1,10 +1,12 @@
 import './App.css';
-import {FormControl,Select,MenuItem} from '@material-ui/core';
-import {useState,useEffect} from 'react'
+import {FormControl,Select,MenuItem,Card,CardContent} from '@material-ui/core';
+import {useState,useEffect} from 'react';
+import Table from './Table';
 function App() {
 
   const [countrynames,setcountrynames] = useState([]);
   const [country,setInputcountry] = useState("worldwide");
+  const [tabledata,setTableData] = useState([]);
 
   useEffect (() => {
     const getcountriesdata = ( () =>{
@@ -17,15 +19,17 @@ function App() {
 
       }));
       setcountrynames(countrynames);
-      
-
-
-    });
+      setTableData(data);
+})
     
 })
 getcountriesdata();
 },[]);
- const onCountryChange = ((e) => {
+
+
+
+ const onCountryChange = (async (e) => {
+
   const countrycode = e.target.value;
   setInputcountry(countrycode);
 })
@@ -38,9 +42,9 @@ getcountriesdata();
       <div className = "app_left">
         <div className = "app_header">
         <h1> Covid - Tracker WebApp </h1>
-        </div>
+        
 
-        <div>
+        <FormControl>
         <Select className = "app_search" 
         variant = "outlined" 
         value = {country}
@@ -51,14 +55,17 @@ getcountriesdata();
          ))}
           
         </Select>
+        </FormControl>
 
         </div>
-
-        
-        
-        
+        </div>
+    <Card className = "app_right"> 
+    <CardContent>
+      <div className = "table">
+        <Table arraycountries = {tabledata}/>
       </div>
-      <div className = "app_right"> <h1>HI I am right</h1></div>
+    </CardContent>
+    </Card>
     </div>
 
   );

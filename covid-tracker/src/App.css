@@ -11,9 +11,13 @@
 }
 .app_left{
   background-color: whitesmoke;
-  display:flex;
+  
   justify-content: space-between;
   flex:0.8;
+}
+.app_header{
+  display:flex;
+  justify-content: space-between;
 }
 
 .app_right{

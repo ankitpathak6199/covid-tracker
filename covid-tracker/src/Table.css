@@ -1,0 +1,7 @@
+.table{
+    margin-top: 20px;
+    overflow: scroll;
+    height: 400px;
+    color:wheat;
+    background-color: grey;
+}
