@@ -9,6 +9,7 @@
   height : 100vh;
   background-color: grey;
 }
+
 .app_left{
   background-color: whitesmoke;
   
@@ -18,8 +19,14 @@
 .app_header{
   display:flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
+.information_boxes{
+  display:flex;
+  justify-content: space-between;
+  
 
+}
 .app_right{
   background-color:white;
 }

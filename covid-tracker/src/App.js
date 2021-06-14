@@ -2,6 +2,8 @@ import './App.css';
 import {FormControl,Select,MenuItem,Card,CardContent} from '@material-ui/core';
 import {useState,useEffect} from 'react';
 import Table from './Table';
+import getsorteddata from './utilities';
+import Boxes from './Boxes';
 function App() {
 
   const [countrynames,setcountrynames] = useState([]);
@@ -19,6 +21,7 @@ function App() {
 
       }));
       setcountrynames(countrynames);
+      getsorteddata(data);
       setTableData(data);
 })
     
@@ -50,6 +53,7 @@ getcountriesdata();
         value = {country}
         onChange = {onCountryChange}
         >
+          <MenuItem value="worldwide">Worldwide</MenuItem>
          { countrynames.map((country) => (
            <MenuItem value = {country.value}>{country.name}</MenuItem>
          ))}
@@ -58,7 +62,13 @@ getcountriesdata();
         </FormControl>
 
         </div>
+        <div className = "information_boxes">
+          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
+          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
+          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
+
         </div>
+      </div>
     <Card className = "app_right"> 
     <CardContent>
       <div className = "table">
