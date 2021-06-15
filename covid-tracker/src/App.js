@@ -9,7 +9,16 @@ function App() {
   const [countrynames,setcountrynames] = useState([]);
   const [country,setInputcountry] = useState("worldwide");
   const [tabledata,setTableData] = useState([]);
+  const [CasesType,setcasesType] = useState("cases")
+  const [countryinfo,setcountryinfo] = useState([]);
 
+  useEffect(()=>{
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then(response => response.json())
+    .then(data => {
+      setcountryinfo(data)
+    })
+  },[])
   useEffect (() => {
     const getcountriesdata = ( () =>{
       fetch("https://disease.sh/v3/covid-19/countries")
@@ -29,11 +38,28 @@ function App() {
 getcountriesdata();
 },[]);
 
+useEffect( () =>{
+
+  
+}
+
+
+,[])
+
+
+
 
 
  const onCountryChange = (async (e) => {
+   const countrycode = e.target.value;
+   var url = country==="worldwide"?"https://disease.sh/v3/covid-19/all":`https://disease.sh/v3/covid-19/countries/${countrycode}`;
+   fetch(url)
+   .then(response => response.json())
+   .then(data => {
+     setcountryinfo(data);
+     
+   })
 
-  const countrycode = e.target.value;
   setInputcountry(countrycode);
 })
 
@@ -63,9 +89,9 @@ getcountriesdata();
 
         </div>
         <div className = "information_boxes">
-          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
-          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
-          <Boxes title = "cases" cases = "14000" total = "1000000000"/>
+          <Boxes onClick = {(e) => setcasesType("cases")} isRed = {true} active = {CasesType === "cases"} title = "cases" cases = {countryinfo.todayCases} total = {countryinfo.cases}/>
+          <Boxes onClick = {(e) => setcasesType("recovered")} active = {CasesType === "recovered"} title = "recovered" cases = {countryinfo.todayRecovered} total = {countryinfo.recovered}/>
+          <Boxes onClick = {(e) => setcasesType("deaths")} isRed = {true} active = {CasesType === "deaths"} title = "deaths" cases = {countryinfo.todayDeaths} total = {countryinfo.deaths}/>
 
         </div>
       </div>

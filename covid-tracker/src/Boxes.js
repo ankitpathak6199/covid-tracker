@@ -4,9 +4,9 @@ import { CardContent } from '@material-ui/core';
 import './Boxes.css';
 
 
-const Boxes = ({title,cases,total}) => {
+const Boxes = ({title,cases,total,isRed,active,...props}) => {
     return (
-        <Card className = "infobox">
+        <Card  onClick = {props.onClick} className = {`infobox ${active && "box_selected"} ${isRed && "infobox__red"}`}>
             <CardContent>
                 <Typography>
                     {title}
