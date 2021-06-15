@@ -4,6 +4,7 @@ import {useState,useEffect} from 'react';
 import Table from './Table';
 import getsorteddata from './utilities';
 import Boxes from './Boxes';
+import Linegraph from './Linegraphs'
 function App() {
 
   const [countrynames,setcountrynames] = useState([]);
@@ -99,7 +100,12 @@ useEffect( () =>{
     <CardContent>
       <div className = "table">
         <Table arraycountries = {tabledata}/>
+      
       </div>
+      <div className = "linegraph">
+        <Linegraph casestype={CasesType}/>
+        </div>
+      
     </CardContent>
     </Card>
     </div>

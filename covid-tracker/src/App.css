@@ -28,5 +28,19 @@
 
 }
 .app_right{
-  background-color:white;
+  display:flex;
+  flex-direction: column;
+   background-color:white;
+}
+.table{
+  flex : 0.9;
+}
+.lingraph{
+  flex:0.1;
+}
+
+
+.linegraph{
+  position:absolute;
+  margin-bottom: 1rem;
 }
