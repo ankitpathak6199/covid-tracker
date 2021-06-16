@@ -3,7 +3,7 @@ import "./Table.css";
 
 const Table = ({arraycountries}) => {
     return (
-        <div className = "tablecomponent">
+        <div className = "table">
             {
                 arraycountries.map((country => (
                     <tr>

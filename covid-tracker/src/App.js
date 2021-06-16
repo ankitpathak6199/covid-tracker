@@ -98,13 +98,13 @@ useEffect( () =>{
       </div>
     <Card className = "app_right"> 
     <CardContent>
-      <div className = "table">
+      
         <Table arraycountries = {tabledata}/>
       
-      </div>
-      <div className = "linegraph">
+      
+      
         <Linegraph casestype={CasesType}/>
-        </div>
+        
       
     </CardContent>
     </Card>

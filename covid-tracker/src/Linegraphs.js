@@ -1,11 +1,18 @@
 import React,{useState,useEffect} from 'react'
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 import numeral from "numeral";
 
 const options = {
-    legend: {
-      display: false,
+    plugins: {
+        title: {
+            display: true,
+            text: 'Covid cases',
+        },
+        legend: {
+            display: true,
+          },
     },
+   
     elements: {
       point: {
         radius: 0,
@@ -34,7 +41,7 @@ const options = {
       yAxes: [
         {
           gridLines: {
-            display: false,
+            display: true,
           },
           ticks: {
             // Include a dollar sign in the ticks
@@ -73,7 +80,7 @@ const Linegraphs = ({casestype}) => {
         .then(response => response.json())
         .then(data=>{
             setdata(buildgraphs(data,casestype));
-            console.log(buildgraphs(data,casestype));
+          
             
         })
 
@@ -82,14 +89,15 @@ const Linegraphs = ({casestype}) => {
 
     return (
         
-     <div>   
+     <div className = "linegraph">   
             {data?.length>0 && (
-        <Line  data={{
+        <Bar  data={{
             datasets: [
               {
                 backgroundColor: "rgba(204, 16, 52, 0.5)",
                 borderColor: "#CC1034",
                 data: data,
+                label: `corona virus ${casestype}`,
               },
             ],
           }}
